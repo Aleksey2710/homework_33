@@ -15,23 +15,22 @@ class UserDaoTest {
     private static final String INCORRECT_NAME = "Ivan";
 
 
-    private UserDaoImpl daoImpl;
+    private final UserDaoImpl daoImpl = new UserDaoImpl();
 
-    @BeforeEach
-    void addListUsers() {
-        daoImpl = new UserDaoImpl();
-    }
-
-    @AfterEach
-    void addListNull() {
-        daoImpl = null;
-    }
+//    @BeforeEach
+//    void addListUsers() {
+//        daoImpl = new UserDaoImpl();
+//    }
+//
+//    @AfterEach
+//    void addListNull() {
+//        daoImpl = null;
+//    }
 
     @Test
     void shouldReturnUserByName() {
 
         assertEquals(daoImpl.getUserByName(CORRECT_NAME), CORRECT_USER_BY_NAME);
-        assertNotNull(daoImpl.getUserByName(CORRECT_NAME));
     }
 
     @Test

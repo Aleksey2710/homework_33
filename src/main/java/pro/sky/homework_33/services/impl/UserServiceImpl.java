@@ -5,20 +5,15 @@ import pro.sky.homework_33.services.UserDao;
 import pro.sky.homework_33.services.UserService;
 
 public class UserServiceImpl implements UserService {
+    private final UserDao dao;
 
-    private final UserDaoImpl dao = new UserDaoImpl();
-
+    public UserServiceImpl(UserDao dao) {
+        this.dao = dao;
+    }
 
     @Override
     public boolean checkUserExist(User user) {
 
-        if (getDao().findAllUsers().contains(user)) {
-            return true;
-        }
-        return false;
-    }
-
-    public UserDao getDao() {
-        return dao;
+        return dao.getUserByName(user.getName()) != null;
     }
 }

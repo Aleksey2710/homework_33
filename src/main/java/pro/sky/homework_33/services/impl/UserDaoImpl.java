@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 
-    private static final List<User> userList = new ArrayList<>();
+    private final List<User> userList = new ArrayList<>();
 
     public UserDaoImpl() {
         userList.add(new User("Bob", 25, true));
