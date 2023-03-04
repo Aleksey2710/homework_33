@@ -9,7 +9,7 @@ import pro.sky.homework_33.model.User;
 import pro.sky.homework_33.services.impl.UserServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
@@ -33,6 +33,8 @@ class UserServiceImplTest {
         when(userDaoMock.getUserByName(CORRECT_NAME)).thenReturn(CORRECT_USER);
 
         assertTrue(out.checkUserExist(CORRECT_USER));
+
+        verify(userDaoMock, times(1)).getUserByName(CORRECT_NAME);
     }
 
     @Test
@@ -41,5 +43,7 @@ class UserServiceImplTest {
         when(userDaoMock.getUserByName(INCORRECT_NAME)).thenReturn(null);
 
         assertFalse(out.checkUserExist(INCORRECT_USER));
+
+        verify(userDaoMock, times(1)).getUserByName(INCORRECT_NAME);
     }
 }
